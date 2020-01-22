@@ -16,6 +16,9 @@ class MainViewModel : BaseViewModel() {
     private val postLiveData: MutableLiveData<Post> = MutableLiveData()
     val _postLiveData : LiveData<Post> = postLiveData
 
+    // Photo adapter
+    val photoRecyclerViewAdapter: PhotoRecyclerViewAdapter = PhotoRecyclerViewAdapter()
+
     init {
         getPosts()
     }
@@ -24,6 +27,7 @@ class MainViewModel : BaseViewModel() {
         postRepository.loadPostList("kitten", object: PostCallback {
             override fun onLoadPostSuccess(post: Post) {
                 postLiveData.value = post
+                photoRecyclerViewAdapter.updatePhotoList(post.photos.photo)
             }
 
             override fun onLoadPostError(e: Throwable) {
