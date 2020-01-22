@@ -1,6 +1,7 @@
-package com.czxbnb.flickr.ui.component
+package com.czxbnb.flickr.injection.component
 
-import com.czxbnb.flickr.ui.module.RepositoryModule
+import com.czxbnb.flickr.injection.module.RepositoryModule
+import com.czxbnb.flickr.ui.MainViewModel
 import dagger.Component
 import javax.inject.Singleton
 
@@ -16,4 +17,6 @@ interface ViewModelComponent {
 
         fun repositoryModule (repositoryModule: RepositoryModule): Builder
     }
+
+    fun inject(mainViewModel: MainViewModel)
 }

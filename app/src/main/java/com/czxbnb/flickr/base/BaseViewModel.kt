@@ -3,8 +3,9 @@ package com.czxbnb.flickr.base
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.czxbnb.flickr.ui.component.DaggerViewModelComponent
-import com.czxbnb.flickr.ui.component.ViewModelComponent
-import com.czxbnb.flickr.ui.module.RepositoryModule
+import com.czxbnb.flickr.injection.component.ViewModelComponent
+import com.czxbnb.flickr.injection.module.RepositoryModule
+import com.czxbnb.flickr.ui.MainViewModel
 import java.net.ConnectException
 
 abstract class BaseViewModel : ViewModel() {
@@ -21,7 +22,7 @@ abstract class BaseViewModel : ViewModel() {
 
     private fun inject() {
         when (this) {
-
+            is MainViewModel -> component.inject(this)
         }
     }
 
