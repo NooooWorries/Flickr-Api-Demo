@@ -9,18 +9,19 @@ import com.czxbnb.flickr.R
 import com.czxbnb.flickr.base.BaseActivity
 import com.czxbnb.flickr.databinding.ActivityMainBinding
 
+/**
+ * Remarks: This aictivity bind with viewModel
+ * Thus, the data won't reload even if I didn't implement onSaveInstance()
+ * The viewmodel won't execute onCreate() again even if the orientaion changed
+ */
 class MainActivity: BaseActivity<MainViewModel, ActivityMainBinding>(MainViewModel::class.java) {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dataBinding.viewModel = getActivityViewModel()
         dataBinding.rvPhotos.layoutManager =
             LinearLayoutManager (this, LinearLayoutManager.VERTICAL, false)
-
-        getActivityViewModel()._postLiveData.observe(this, Observer { post->
-            Log.d("---->" , post.photos.photo.size.toString())
-
-        })
     }
 
     override fun getLayoutRes(): Int {
