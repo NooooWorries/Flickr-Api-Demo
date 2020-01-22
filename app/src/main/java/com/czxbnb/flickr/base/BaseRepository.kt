@@ -1,7 +1,7 @@
 package com.czxbnb.flickr.base
 
+import com.czxbnb.flickr.injection.component.DaggerRepositoryComponent
 import com.czxbnb.flickr.injection.module.ApiModule
-import com.czxbnb.flickr.ui.component.DaggerRepositoryComponent
 import com.czxbnb.flickr.injection.component.RepositoryComponent
 import com.czxbnb.flickr.models.post.PostRepository
 

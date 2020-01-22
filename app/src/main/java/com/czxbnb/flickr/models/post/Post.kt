@@ -3,30 +3,26 @@ package com.czxbnb.flickr.models.post
 import retrofit2.http.Field
 
 data class Post(
-    @Field("id")
-    val id: String,
+    val photos: Photos,
+    val stat: String
+)
 
-    @Field("owner")
-    val owner: String,
+data class Photos(
+    val page: Int,
+    val pages: Int,
+    val perpage: Int,
+    val photo: List<Photo>,
+    val total: String
+)
 
-    @Field("secret")
-    val secret: String,
-
-    @Field("server")
-    val server: String,
-
-    @Field("farm")
+data class Photo(
     val farm: Int,
-
-    @Field("title")
-    val title: String,
-
-    @Field("ispublic")
-    val isPublic: Int,
-
-    @Field("isfriend")
-    val isFriend: Int,
-
-    @Field("isfamily")
-    val isFamily: Int
+    val id: String,
+    val isfamily: Int,
+    val isfriend: Int,
+    val ispublic: Int,
+    val owner: String,
+    val secret: String,
+    val server: String,
+    val title: String
 )
